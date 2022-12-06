@@ -2,10 +2,13 @@ socket:
   port: 8899
 
 oracle:
-  username: cssxk
-  password: cssxk
+  #  username: cssxk
+  #  password: cssxk
+  #  schemas: cssxk
+  username: FLO
+  password: flo
+  schemas: FLO
   instance: orcl
-  schemas: cssxk
   directory_name: DATA_PUMP_DIR
   dirertory_path: D:\app\dayandnightcycle\admin\orcl\dpdump\
   #exclude=index,trigger

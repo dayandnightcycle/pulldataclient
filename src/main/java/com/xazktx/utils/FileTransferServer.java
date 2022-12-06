@@ -125,7 +125,7 @@ public class FileTransferServer {
         String commond = "cmd /c start impdp " + username + "/" + password + "@" + instance + " DIRECTORY=" + directory_name + " DUMPFILE=daochu.dmp " +
                 "SCHEMAS=" + schemas + " TABLE_EXISTS_ACTION=replace parallel=8 " + exclude;
         System.out.println(commond);
-        log.info("cmd导入开始执行");
+        log.info("dmp导入开始执行");
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(commond);
         InputStream inputStream = process.getInputStream();
@@ -140,7 +140,7 @@ public class FileTransferServer {
         System.out.println("sb " + sb);
         int i = process.waitFor();
         log.info("i = " + i);
-        log.info("cmd导入完成");
+        log.info("dmp导入完成");
         bufferedReader.close();
         process.destroy();
     }

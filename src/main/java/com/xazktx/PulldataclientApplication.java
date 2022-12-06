@@ -13,7 +13,7 @@ public class PulldataclientApplication {
         ConfigurableApplicationContext run = SpringApplication.run(PulldataclientApplication.class, args);
         FileTransferServer bean = run.getBean(FileTransferServer.class);
         try {
-            bean.cmd();
+            bean.load();
         } catch (Exception e) {
             e.printStackTrace();
         }
