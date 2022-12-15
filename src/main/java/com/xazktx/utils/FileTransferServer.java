@@ -27,8 +27,8 @@ public class FileTransferServer {
     private String directory_name;
     @Value("${oracle.dirertory_path}")
     private String directory_path;
-    @Value("${oracle.exclude}")
-    private String exclude;
+    @Value("${oracle.win}")
+    private String windows;
     private static DecimalFormat df = null;
     //private String commond = "cmd /c start impdp cssxk/cssxk@orcl DIRECTORY=DATA_PUMP_DIR DUMPFILE=daochu.dmp " +
 
@@ -121,15 +121,14 @@ public class FileTransferServer {
     }
 
     public void cmd() throws IOException, InterruptedException {
-        String c = "cmd /c start impdp FLO/flo@orcl DIRECTORY=DATA_PUMP_DIR DUMPFILE=daochu.dmp SCHEMAS=FLO TABLE_EXISTS_ACTION=replace parallel=8";
+        String c = windows + " impdp FLO/flo@orcl DIRECTORY=DATA_PUMP_DIR DUMPFILE=daochu.dmp SCHEMAS=FLO TABLE_EXISTS_ACTION=replace parallel=8";
         String commond = "cmd /c start impdp " + username + "/" + password + "@" + instance + " DIRECTORY=" + directory_name + " DUMPFILE=daochu.dmp " +
-                "SCHEMAS=" + schemas + " TABLE_EXISTS_ACTION=replace parallel=8 " + exclude;
+                "SCHEMAS=" + schemas + " TABLE_EXISTS_ACTION=replace parallel=8 ";
         System.out.println(commond);
         log.info("dmp导入开始执行");
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(commond);
         InputStream inputStream = process.getInputStream();
-        log.info("inputStream.available() = " + inputStream.available());
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
         String s;
         StringBuffer sb = new StringBuffer();
@@ -137,9 +136,7 @@ public class FileTransferServer {
             sb.append(s);
             sb.append("\n");
         }
-        System.out.println("sb " + sb);
         int i = process.waitFor();
-        log.info("i = " + i);
         log.info("dmp导入完成");
         bufferedReader.close();
         process.destroy();
