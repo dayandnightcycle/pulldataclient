@@ -9,4 +9,4 @@ oracle:
   directory_name: DATA_PUMP_DIR
   dirertory_path: D:\app\dayandnightcycle\admin\orcl\dpdump\
 
-  win: cmd /c start
+  win:
