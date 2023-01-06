@@ -122,7 +122,7 @@ public class FileTransferServer {
 
     public void cmd() throws IOException, InterruptedException {
         //String c = windows + " impdp FLO/flo@orcl DIRECTORY=DATA_PUMP_DIR DUMPFILE=daochu.dmp SCHEMAS=FLO TABLE_EXISTS_ACTION=replace parallel=8";
-        String commond = windows + " impdp " + username + "/" + password + "@" + instance + " DIRECTORY=" + directory_name + " DUMPFILE=daochu.dmp " +
+        String commond = "cmd /c " + windows + " impdp " + username + "/" + password + "@" + instance + " DIRECTORY=" + directory_name + " DUMPFILE=daochu.dmp " +
                 "SCHEMAS=" + schemas + " TABLE_EXISTS_ACTION=replace parallel=8 ";
         System.out.println(commond);
         log.info("dmp导入开始执行");
