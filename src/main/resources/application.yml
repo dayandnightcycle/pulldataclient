@@ -4,8 +4,13 @@ socket:
 oracle:
   username: FLO
   password: flo
+  #指定导入用户
   schemas: FLO
+  #数据库实例名
   instance: orcl
+  #绝对路径在oracle数据库里的别名
   directory_name: DATA_PUMP_DIR
+  #绝对路径，使用 select * from dba_directories;查询别名对应的绝对路径
   dirertory_path: D:\app\dayandnightcycle\admin\orcl\dpdump\
+  #打开或关闭cmd窗口
   win: start
